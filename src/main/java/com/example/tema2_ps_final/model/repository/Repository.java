@@ -316,26 +316,6 @@ public class Repository<T> implements Serializable {
         return false;
     }
 
-
-//    public boolean delete(int id, String columnName) {
-//        java.sql.Connection connection = null;
-//        PreparedStatement statement = null;
-//        String query = "DELETE FROM " + type.getSimpleName() + " WHERE " + columnName + " = ?";
-//        try {
-//            connection = Connection.getConnection();
-//            statement = connection.prepareStatement(query);
-//            statement.setInt(1, id);
-//            int affectedRows = statement.executeUpdate();
-//            return affectedRows > 0;
-//        } catch (SQLException e) {
-//           LOGGER.log(Level.WARNING, type.getName() + "DAO:delete " + e.getMessage());
-//        } finally {
-//            Connection.close(statement);
-//            Connection.close(connection);
-//        }
-//        return false;
-//    }
-
     public int delete(int id) {
         Field primaryKeyField;
         try {
@@ -358,8 +338,6 @@ public class Repository<T> implements Serializable {
             return 0;
         }
     }
-
-
 
     private List<T> createObjects(ResultSet resultSet) {
         List<T> list = new ArrayList<>();

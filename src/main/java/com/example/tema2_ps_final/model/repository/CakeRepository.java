@@ -3,7 +3,9 @@ package com.example.tema2_ps_final.model.repository;
 import com.example.tema2_ps_final.model.Prajitura;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CakeRepository extends Repository<Prajitura> implements Serializable {
     private static CakeRepository instance;
@@ -22,4 +24,5 @@ public class CakeRepository extends Repository<Prajitura> implements Serializabl
         }
         return instance;
     }
+
 }

@@ -64,6 +64,7 @@ public class PrajituraController {
         view.setSearchButtonAction(() -> handleCautaDupaNume(view.getSearchName()));
         view.setAvailabilityButtonAction(() -> handleDisponibilitate(view.getAvailabilityCofetarieId()));
         view.setValidityButtonAction(() -> handleNevalabile(view.getValidityCofetarieId()));
+
     }
 
     public void handleAdaugaPrajitura() {
