@@ -13,7 +13,6 @@ import java.util.List;
 // notifica view urile cand se modifica ceva in date
 public class PrajituraViewModel extends Observable {
     private final ObservableList<Prajitura> prajituri;
-   // private final Repository<Prajitura> prajituraRepository;
     private final CakeRepository prajituraRepository;
 
     public PrajituraViewModel() {
@@ -53,6 +52,15 @@ public class PrajituraViewModel extends Observable {
         boolean succes = prajituraRepository.update(prajitura);
         if (succes) {
             loadData(); // Reîncarcă lista completă
+        }
+    }
+    public void updateStock(int prajituraId, int cofetarieId, int newStock) {
+        boolean succes = prajituraRepository.updateStock(prajituraId, cofetarieId, newStock);
+        if (succes) {
+            loadData();  // Reîncarcă lista de prăjituri
+            notifyObservers();  // Notifică observațiile (view-ul)
+        } else {
+            System.out.println("Eroare la actualizarea stocului.");
         }
     }
 
