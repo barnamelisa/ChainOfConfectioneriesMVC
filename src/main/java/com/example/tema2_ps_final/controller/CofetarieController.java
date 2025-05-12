@@ -5,6 +5,7 @@ import com.example.tema2_ps_final.model.viewmodel.CofetarieViewModel;
 import com.example.tema2_ps_final.view.CofetarieView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
@@ -40,8 +41,9 @@ public class CofetarieController {
     }
 
     private void setupEventHandlers() {
-        view.setAddButtonAction(this::handleAdaugaCofetarie);
-        view.setUpdateButtonAction(() -> {
+        view.getAddButton().setOnAction(e -> handleAdaugaCofetarie());
+
+        view.getUpdateButton().setOnAction(e -> {
             if (view.getSelectedCofetarie() != null) {
                 view.getSelectedCofetarie().setAddress(view.getAdresaCofetarie());
                 handleUpdateCofetarie(view.getSelectedCofetarie());
@@ -50,7 +52,7 @@ public class CofetarieController {
             }
         });
 
-        view.setDeleteButtonAction(() -> {
+        view.getDeleteButton().setOnAction(e -> {
             if (view.getSelectedCofetarie() != null) {
                 handleStergereCofetarie(view.getSelectedCofetarie().getId());
             } else {
@@ -60,7 +62,8 @@ public class CofetarieController {
 
     }
 
-    public void handleAdaugaCofetarie() {
+    // ACEASTA TREBUIE MUTATĂ ÎN AFARA LUI setupEventHandlers
+    private void handleAdaugaCofetarie() {
         try {
             String adresa = view.getAdresaCofetarie();
             Cofetarie nouaCofetarie = new Cofetarie(adresa);

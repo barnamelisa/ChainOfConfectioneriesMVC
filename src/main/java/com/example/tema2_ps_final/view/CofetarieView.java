@@ -7,7 +7,13 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+
+import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class CofetarieView implements Observer {
 
@@ -25,30 +31,11 @@ public class CofetarieView implements Observer {
     @FXML private Button clearFieldsButton;
     @FXML private Label messageLabel;
 
+
     @FXML
     public void initialize() {
         idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
         adresaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAddress()));
-    }
-
-    public void setAddButtonAction(Runnable action) {
-        addButton.setOnAction(e -> action.run());
-    }
-
-    public void setUpdateButtonAction(Runnable action) {
-        updateButton.setOnAction(e -> action.run());
-    }
-
-    public void setDeleteButtonAction(Runnable action) {
-        deleteButton.setOnAction(e -> action.run());
-    }
-
-    public void setSearchButtonAction(Runnable action) {
-        searchButton.setOnAction(e -> action.run());
-    }
-
-    public void setClearFieldsButtonAction(Runnable action) {
-        clearFieldsButton.setOnAction(e -> action.run());
     }
 
     public void showMessage(String title, String mesaj) {
@@ -59,6 +46,25 @@ public class CofetarieView implements Observer {
         alert.showAndWait();
     }
 
+    public Button getAddButton() {
+        return addButton;
+    }
+
+    public Button getUpdateButton() {
+        return updateButton;
+    }
+
+    public Button getDeleteButton() {
+        return deleteButton;
+    }
+
+    public Button getSearchButton() {
+        return searchButton;
+    }
+
+    public Button getClearFieldsButton() {
+        return clearFieldsButton;
+    }
     public String getAdresaCofetarie() {
         return adresaField.getText();
     }
@@ -80,5 +86,4 @@ public class CofetarieView implements Observer {
         cofetarieTable.refresh();
         cofetarieTable.setItems(((com.example.tema2_ps_final.model.viewmodel.CofetarieViewModel) observable).getCofetarii());
     }
-
 }

@@ -28,11 +28,6 @@ public class CSVandDOCView implements Observer {
             }
         }
 
-
-    public void setExportButtonAction(Runnable action) {
-        exportButton.setOnAction(e -> action.run());
-    }
-
     @Override
     public void update(Observable observable) {
     }
@@ -43,5 +38,9 @@ public class CSVandDOCView implements Observer {
         } catch (NumberFormatException e) {
             return null;  // Returnăm null dacă ID-ul nu este un număr valid
         }
+    }
+
+    public Button getExportButton() {
+        return exportButton;
     }
 }
