@@ -79,6 +79,7 @@ public class PrajituraController {
         view.getEnglishButton().setOnAction(e -> handleLanguageChange("English"));
         view.getFrenchButton().setOnAction(e -> handleLanguageChange("Français"));
         view.getRomanianButton().setOnAction(e -> handleLanguageChange("Română"));
+        view.getPriceChartButton().setOnAction(e -> handleAfiseazaGraficPreturi());
 
         // Other event handlers for buttons like Add, Update, Delete, etc.
         view.getAddButton().setOnAction(e -> handleAdaugaPrajitura());
@@ -99,6 +100,10 @@ public class PrajituraController {
         view.getSearchButton().setOnAction(e -> handleCautaDupaNume(view.getSearchName()));
         view.getAvailabilityButton().setOnAction(e -> handleDisponibilitate(view.getAvailabilityCofetarieId()));
         view.getValidityButton().setOnAction(e -> handleNevalabile(view.getValidityCofetarieId()));
+    }
+
+    private void handleAfiseazaGraficPreturi() {
+        com.example.tema2_ps_final.model.repository.CakeRepository.getInstance().afiseazaGraficPreturi();
     }
 
     private void handleLanguageChange(String language) {

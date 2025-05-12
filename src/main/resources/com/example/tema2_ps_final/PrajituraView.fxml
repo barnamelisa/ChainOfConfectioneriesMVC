@@ -81,6 +81,7 @@
                         <Button fx:id="englishButton" text="English"/>
                         <Button fx:id="frenchButton" text="Français"/>
                         <Button fx:id="romanianButton" text="Română"/>
+                        <Button fx:id="priceChartButton" text="Grafic Prețuri"/>
                     </HBox>
                 </VBox>
             </ScrollPane>

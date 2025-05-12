@@ -6,6 +6,7 @@ module com.example.tema2_ps_final {
 //    requires org.apache.poi.ooxml;
 //    requires org.apache.poi.ooxml.schemas;
     requires org.apache.xmlbeans;
+    requires org.jfree.jfreechart;
 
     opens com.example.tema2_ps_final to javafx.fxml;
     exports com.example.tema2_ps_final;

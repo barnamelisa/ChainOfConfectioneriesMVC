@@ -11,15 +11,18 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-//import org.apache.poi.xwpf.usermodel.XWPFDocument;
-//import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 import com.example.tema2_ps_final.model.Cofetarie;
 import com.example.tema2_ps_final.model.Prajitura;
 import com.example.tema2_ps_final.model.connection.Connection;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 
 public class Repository<T> implements Serializable {
     protected static final Logger LOGGER = Logger.getLogger(Repository.class.getName());
@@ -90,6 +93,41 @@ public class Repository<T> implements Serializable {
 
         return list;
     }
+
+    public void afiseazaGraficPreturi() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        // Query pentru a obține numele prăjiturii și prețul din tabela prajituri
+        String query = "SELECT nume_prajitura, pret FROM prajitura";
+
+        try (java.sql.Connection connection = Connection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                String numePrajitura = resultSet.getString("nume_prajitura");
+                double pret = resultSet.getDouble("pret");
+
+                dataset.addValue(pret, "Preț", numePrajitura);
+            }
+
+            JFreeChart chart = ChartFactory.createBarChart(
+                    "Prețuri Prăjituri",       // Titlul graficului
+                    "Prăjitură",               // Eticheta axei X
+                    "Preț (lei)",              // Eticheta axei Y
+                    dataset                    // Dataset-ul pentru grafic
+            );
+
+            // Afișează graficul într-o fereastră
+            ChartFrame frame = new ChartFrame("Grafic Prețuri", chart);
+            frame.pack();
+            frame.setVisible(true);
+
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Eroare la extragerea datelor din baza de date", e);
+        }
+    }
+
     public List<Cofetarie> getTableContent2() {
         List<Cofetarie> list = new ArrayList<>();
         String sql = "SELECT * FROM cofetarie";
