@@ -6,6 +6,8 @@
     <children>
         <VBox alignment="CENTER" spacing="20">
             <Label text="Main Menu" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <!-- Navigation Buttons -->
             <HBox spacing="10">
                 <Button fx:id="cakesButton" text="Cakes"/>
                 <Button fx:id="confectionariesButton" text="Confectionaries"/>
@@ -14,5 +16,3 @@
         </VBox>
     </children>
 </StackPane>
-
-
