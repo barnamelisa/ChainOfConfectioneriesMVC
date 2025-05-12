@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <GridPane xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.example.tema2_ps_final.view.PrajituraView"
           hgap="10" vgap="10">
+
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
@@ -72,10 +74,13 @@
 
                     <!-- Action buttons -->
                     <HBox spacing="10">
-                        <Button fx:id="addButton" text="Add Cake" />
-                        <Button fx:id="updateButton" text="Update Cake" />
-                        <Button fx:id="deleteButton" text="Delete Cake" />
-                        <Button fx:id="clearFieldsButton" text="Clear Fields" />
+                        <Button fx:id="addButton" text="Add Cake"/>
+                        <Button fx:id="updateButton" text="Update Cake"/>
+                        <Button fx:id="deleteButton" text="Delete Cake"/>
+                        <Button fx:id="clearFieldsButton" text="Clear Fields"/>
+                        <Button fx:id="englishButton" text="English"/>
+                        <Button fx:id="frenchButton" text="Français"/>
+                        <Button fx:id="romanianButton" text="Română"/>
                     </HBox>
                 </VBox>
             </ScrollPane>

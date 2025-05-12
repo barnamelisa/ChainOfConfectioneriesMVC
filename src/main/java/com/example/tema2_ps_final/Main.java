@@ -4,20 +4,17 @@ import com.example.tema2_ps_final.controller.CSVandDOCController;
 import com.example.tema2_ps_final.controller.CofetarieController;
 import com.example.tema2_ps_final.controller.PrajituraController;
 import javafx.application.Application;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
 public class Main extends Application {
+
     @Override
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
@@ -54,6 +51,8 @@ public class Main extends Application {
         primaryStage.setTitle("Sweet Treats Management");
         primaryStage.show();
     }
+
+
 
     public static void main(String[] args) {
         launch(args);

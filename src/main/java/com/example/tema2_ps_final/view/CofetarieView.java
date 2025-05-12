@@ -31,13 +31,31 @@ public class CofetarieView implements Observer {
     @FXML private Button clearFieldsButton;
     @FXML private Label messageLabel;
 
+    // Language selection controls
+    @FXML private RadioButton englishButton;
+    @FXML private RadioButton romanianButton;
+    @FXML private RadioButton frenchButton;
+    private ToggleGroup languageToggleGroup = new ToggleGroup();
 
     @FXML
     public void initialize() {
+        // Language selection setup
+        englishButton.setUserData("en");
+        frenchButton.setUserData("fr");
+        romanianButton.setUserData("ro");
+
+        // Grouping radio buttons
+        englishButton.setToggleGroup(languageToggleGroup);
+        frenchButton.setToggleGroup(languageToggleGroup);
+        romanianButton.setToggleGroup(languageToggleGroup);
+        englishButton.setSelected(true); // default language
+
+        // Set up the table columns
         idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
         adresaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAddress()));
     }
 
+    // Method to show messages (alerts)
     public void showMessage(String title, String mesaj) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -46,6 +64,7 @@ public class CofetarieView implements Observer {
         alert.showAndWait();
     }
 
+    // Getters for buttons
     public Button getAddButton() {
         return addButton;
     }
@@ -65,18 +84,23 @@ public class CofetarieView implements Observer {
     public Button getClearFieldsButton() {
         return clearFieldsButton;
     }
+
+    // Get the address of the 'Cofetarie'
     public String getAdresaCofetarie() {
         return adresaField.getText();
     }
 
+    // Get the address to search
     public String getSearchAddress() {
         return searchAddressField.getText();
     }
 
+    // Set the table items (list of Cofetarii)
     public void setTableItems1(ObservableList<Cofetarie> lista) {
         cofetarieTable.setItems(lista);
     }
 
+    // Get the selected Cofetarie
     public Cofetarie getSelectedCofetarie() {
         return cofetarieTable.getSelectionModel().getSelectedItem();
     }
