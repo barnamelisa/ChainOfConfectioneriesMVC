@@ -45,6 +45,7 @@ public class PrajituraView implements Observer {
     @FXML private Button searchButton;
     @FXML private Button availabilityButton;
     @FXML private Button validityButton;
+    @FXML private Button priceChartButton;
 
     @FXML private Label messageLabel;
 
@@ -55,11 +56,6 @@ public class PrajituraView implements Observer {
 
     @FXML
     public void initialize() {
-
-        // Button Actions
-        englishButton.setOnAction(event -> handleLanguageChange("English"));
-        frenchButton.setOnAction(event -> handleLanguageChange("Français"));
-        romanianButton.setOnAction(event -> handleLanguageChange("Română"));
 
         // Table column bindings
         numePrajituraColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNume_prajitura()));
@@ -77,6 +73,11 @@ public class PrajituraView implements Observer {
                 setText(empty || item == null ? null : new DecimalFormat("#.##").format(item));
             }
         });
+
+        englishButton.setOnAction(event -> handleLanguageChange("English"));
+        frenchButton.setOnAction(event -> handleLanguageChange("Français"));
+        romanianButton.setOnAction(event -> handleLanguageChange("Română"));
+
     }
 
     // Handle language change based on the button clicked
@@ -218,5 +219,8 @@ public class PrajituraView implements Observer {
 
     public ButtonBase getRomanianButton() {
         return romanianButton;
+    }
+    public Button getPriceChartButton() {
+        return priceChartButton;
     }
 }

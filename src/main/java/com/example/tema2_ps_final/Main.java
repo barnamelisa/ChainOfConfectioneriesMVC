@@ -19,22 +19,18 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         BorderPane root = new BorderPane();
 
-        // Inițializăm controlerele
         PrajituraController prajituraController = new PrajituraController();
         CofetarieController cofetarieController = new CofetarieController();
-        CSVandDOCController csvAndDocController = new CSVandDOCController();  // Noul controller pentru CSV și DOC
+        CSVandDOCController csvAndDocController = new CSVandDOCController();
 
-        // Obținem view-urile
         Parent cakeView = prajituraController.getViewRoot();
         Parent cofetarieView = cofetarieController.getViewRoot();
-        Parent csvAndDocView = csvAndDocController.getViewRoot();  // Obținem view-ul pentru CSV and DOC
+        Parent csvAndDocView = csvAndDocController.getViewRoot();
 
-        // Butoane de navigare
         Button buttonCakes = new Button("Cakes");
         Button buttonConfectionaries = new Button("Confectionaries");
         Button buttonCsvDoc = new Button("CSV and Doc");
 
-        // Acțiuni pentru butoane
         buttonCakes.setOnAction(e -> root.setCenter(cakeView));
         buttonConfectionaries.setOnAction(e -> root.setCenter(cofetarieView));
         buttonCsvDoc.setOnAction(e -> root.setCenter(csvAndDocView));
@@ -51,8 +47,6 @@ public class Main extends Application {
         primaryStage.setTitle("Sweet Treats Management");
         primaryStage.show();
     }
-
-
 
     public static void main(String[] args) {
         launch(args);
