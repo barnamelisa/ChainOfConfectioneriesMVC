@@ -32,7 +32,7 @@ public class CSVandDOCController {
     }
 
     public void setupEventHandlers() {
-        view.setExportButtonAction(this::handleExportCSV);
+        view.getExportButton().setOnAction(e -> handleExportCSV());
     }
 
     private void handleExportCSV() {

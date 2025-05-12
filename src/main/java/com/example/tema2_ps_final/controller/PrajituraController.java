@@ -44,8 +44,9 @@ public class PrajituraController {
     }
 
     private void setupEventHandlers() {
-        view.setAddButtonAction(this::handleAdaugaPrajitura);
-        view.setUpdateButtonAction(() -> {
+        view.getAddButton().setOnAction(e -> handleAdaugaPrajitura());
+
+        view.getUpdateButton().setOnAction(e -> {
             if (view.getSelectedCake() != null) {
                 handleUpdatePrajitura(view.getSelectedCake());
             } else {
@@ -53,7 +54,7 @@ public class PrajituraController {
             }
         });
 
-        view.setDeleteButtonAction(() -> {
+        view.getDeleteButton().setOnAction(e -> {
             if (view.getSelectedCake() != null) {
                 handleStergerePrajitura(view.getSelectedCake().getId());
             } else {
@@ -61,11 +62,11 @@ public class PrajituraController {
             }
         });
 
-        view.setSearchButtonAction(() -> handleCautaDupaNume(view.getSearchName()));
-        view.setAvailabilityButtonAction(() -> handleDisponibilitate(view.getAvailabilityCofetarieId()));
-        view.setValidityButtonAction(() -> handleNevalabile(view.getValidityCofetarieId()));
-
+        view.getSearchButton().setOnAction(e -> handleCautaDupaNume(view.getSearchName()));
+        view.getAvailabilityButton().setOnAction(e -> handleDisponibilitate(view.getAvailabilityCofetarieId()));
+        view.getValidityButton().setOnAction(e -> handleNevalabile(view.getValidityCofetarieId()));
     }
+
 
     public void handleAdaugaPrajitura() {
         try {

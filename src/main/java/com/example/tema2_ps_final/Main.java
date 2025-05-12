@@ -4,12 +4,16 @@ import com.example.tema2_ps_final.controller.CSVandDOCController;
 import com.example.tema2_ps_final.controller.CofetarieController;
 import com.example.tema2_ps_final.controller.PrajituraController;
 import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
@@ -36,14 +40,14 @@ public class Main extends Application {
         // Acțiuni pentru butoane
         buttonCakes.setOnAction(e -> root.setCenter(cakeView));
         buttonConfectionaries.setOnAction(e -> root.setCenter(cofetarieView));
-        buttonCsvDoc.setOnAction(e -> root.setCenter(csvAndDocView));  // Navigăm la CSV and DOC
+        buttonCsvDoc.setOnAction(e -> root.setCenter(csvAndDocView));
 
         // Bara de meniu
         HBox menuBar = new HBox(20, buttonCakes, buttonConfectionaries, buttonCsvDoc);
         menuBar.setPadding(new Insets(20));
 
         root.setTop(menuBar);
-        root.setCenter(cakeView);  // Default view este prăjiturile
+        root.setCenter(cakeView);
 
         Scene scene = new Scene(root, 1000, 700);
         primaryStage.setScene(scene);
@@ -54,4 +58,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }

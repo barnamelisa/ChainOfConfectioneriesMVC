@@ -70,34 +70,6 @@ public class PrajituraView implements Observer {
         imagineColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getImagine()));
     }
 
-    public void setAddButtonAction(Runnable action) {
-        addButton.setOnAction(e -> action.run());
-    }
-
-    public void setUpdateButtonAction(Runnable action) {
-        updateButton.setOnAction(e -> action.run());
-    }
-
-    public void setDeleteButtonAction(Runnable action) {
-        deleteButton.setOnAction(e -> action.run());
-    }
-
-    public void setClearFieldsButtonAction(Runnable action) {
-        clearFieldsButton.setOnAction(e -> action.run());
-    }
-
-    public void setSearchButtonAction(Runnable action) {
-        searchButton.setOnAction(e -> action.run());
-    }
-
-    public void setAvailabilityButtonAction(Runnable action) {
-        availabilityButton.setOnAction(e -> action.run());
-    }
-
-    public void setValidityButtonAction(Runnable action) {
-        validityButton.setOnAction(e -> action.run());
-    }
-
     public void showMessage(String title, String mesaj) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -131,6 +103,15 @@ public class PrajituraView implements Observer {
     public Prajitura getSelectedCake() {
         return cakeTable.getSelectionModel().getSelectedItem();
     }
+
+    public Button getAddButton() { return addButton; }
+    public Button getUpdateButton() { return updateButton; }
+    public Button getDeleteButton() { return deleteButton; }
+    public Button getClearFieldsButton() { return clearFieldsButton; }
+    public Button getSearchButton() { return searchButton; }
+    public Button getAvailabilityButton() { return availabilityButton; }
+    public Button getValidityButton() { return validityButton; }
+
 
     @Override
     public void update(Observable observable) {
