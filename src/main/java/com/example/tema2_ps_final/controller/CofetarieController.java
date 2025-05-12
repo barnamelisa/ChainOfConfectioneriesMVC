@@ -8,11 +8,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class CofetarieController {
     private final CofetarieViewModel viewModel;
     private final CofetarieView view;
     private final Parent viewRoot;
+
+    private Locale currentLocale;
+    private ResourceBundle bundle;
 
     public CofetarieController() {
         this.viewModel = new CofetarieViewModel();
@@ -33,7 +38,20 @@ public class CofetarieController {
         this.viewModel.addObserver(view);
         this.view.setTableItems1(viewModel.getCofetarii());
 
+        this.currentLocale = Locale.getDefault(); // Limbajul implicit
+        updateLanguage();
+
         setupEventHandlers();
+    }
+
+    private void updateLanguage() {
+        bundle = ResourceBundle.getBundle("com.example.tema2_ps_final.messages", currentLocale);
+
+        view.getAddButton().setText(bundle.getString("cofetarieAdd"));
+        view.getUpdateButton().setText(bundle.getString("cofetarieUpdate"));
+        view.getDeleteButton().setText(bundle.getString("cofetarieDelete"));
+        view.getClearFieldsButton().setText(bundle.getString("cofetarieClear"));
+        view.getMessageLabel().setText(bundle.getString("cofetarieMessageLoaded"));
     }
 
     public Parent getViewRoot() {
@@ -60,9 +78,28 @@ public class CofetarieController {
             }
         });
 
+        view.getEnglishButton().setOnAction(e -> handleLanguageChange("en"));
+        view.getFrenchButton().setOnAction(e -> handleLanguageChange("fr"));
+        view.getRomanianButton().setOnAction(e -> handleLanguageChange("ro"));
     }
 
-    // ACEASTA TREBUIE MUTATĂ ÎN AFARA LUI setupEventHandlers
+    private void handleLanguageChange(String language) {
+        switch (language) {
+            case "en":
+                currentLocale = Locale.ENGLISH;
+                break;
+            case "fr":
+                currentLocale = Locale.FRENCH;
+                break;
+            case "ro":
+                currentLocale = new Locale("ro");
+                break;
+            default:
+                currentLocale = Locale.getDefault();
+        }
+        updateLanguage(); // Actualizează textul pe baza noii limbi
+    }
+
     private void handleAdaugaCofetarie() {
         try {
             String adresa = view.getAdresaCofetarie();

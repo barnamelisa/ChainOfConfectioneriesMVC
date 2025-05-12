@@ -17,6 +17,10 @@ public class CSVandDOCView implements Observer {
     @FXML private Button exportButton;
     @FXML private Label messageLabel;
 
+    @FXML private Button englishButton;
+    @FXML private Button frenchButton;
+    @FXML private Button romanianButton;
+
     @FXML private TableColumn<Prajitura, Integer> cofetarieIdColumn;
 
         @FXML
@@ -38,6 +42,23 @@ public class CSVandDOCView implements Observer {
         } catch (NumberFormatException e) {
             return null;  // Returnăm null dacă ID-ul nu este un număr valid
         }
+    }
+
+    public Label getMessageLabel() {
+        return messageLabel;
+    }
+
+    // Metode pentru butoanele de schimbare a limbii
+    public Button getEnglishButton() {
+        return englishButton;
+    }
+
+    public Button getFrenchButton() {
+        return frenchButton;
+    }
+
+    public Button getRomanianButton() {
+        return romanianButton;
     }
 
     public Button getExportButton() {

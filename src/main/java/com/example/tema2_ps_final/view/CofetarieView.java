@@ -27,29 +27,17 @@ public class CofetarieView implements Observer {
     @FXML private Button addButton;
     @FXML private Button updateButton;
     @FXML private Button deleteButton;
-    @FXML private Button searchButton;
+
     @FXML private Button clearFieldsButton;
     @FXML private Label messageLabel;
 
     // Language selection controls
-    @FXML private RadioButton englishButton;
-    @FXML private RadioButton romanianButton;
-    @FXML private RadioButton frenchButton;
-    private ToggleGroup languageToggleGroup = new ToggleGroup();
+    @FXML private Button englishButton;
+    @FXML private Button frenchButton;
+    @FXML private Button romanianButton;
 
     @FXML
     public void initialize() {
-        // Language selection setup
-        englishButton.setUserData("en");
-        frenchButton.setUserData("fr");
-        romanianButton.setUserData("ro");
-
-        // Grouping radio buttons
-        englishButton.setToggleGroup(languageToggleGroup);
-        frenchButton.setToggleGroup(languageToggleGroup);
-        romanianButton.setToggleGroup(languageToggleGroup);
-        englishButton.setSelected(true); // default language
-
         // Set up the table columns
         idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()).asObject());
         adresaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAddress()));
@@ -77,10 +65,21 @@ public class CofetarieView implements Observer {
         return deleteButton;
     }
 
-    public Button getSearchButton() {
-        return searchButton;
+    public Button getEnglishButton() {
+        return englishButton;
     }
 
+    public Button getFrenchButton() {
+        return frenchButton;
+    }
+
+    public Button getRomanianButton() {
+        return romanianButton;
+    }
+
+    public Label getMessageLabel() {
+        return messageLabel;
+    }
     public Button getClearFieldsButton() {
         return clearFieldsButton;
     }
@@ -110,4 +109,5 @@ public class CofetarieView implements Observer {
         cofetarieTable.refresh();
         cofetarieTable.setItems(((com.example.tema2_ps_final.model.viewmodel.CofetarieViewModel) observable).getCofetarii());
     }
+
 }

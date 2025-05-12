@@ -7,11 +7,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class CSVandDOCController {
     private final CSVandDOCViewModel viewModel;
     private final CSVandDOCView view;
     private final Parent viewRoot;
+
+    private Locale currentLocale;
+    private ResourceBundle bundle;
 
     public CSVandDOCController() {
         this.viewModel = new CSVandDOCViewModel();
@@ -27,12 +32,42 @@ public class CSVandDOCController {
         }
         this.viewRoot = loadedViewRoot;
 
+        this.currentLocale = Locale.getDefault(); // Limbajul implicit
+        updateLanguage();
 
         setupEventHandlers();
     }
 
+    private void updateLanguage() {
+        bundle = ResourceBundle.getBundle("com.example.tema2_ps_final.messages", currentLocale);
+
+        // Actualizează textul butoanelor și altor elemente
+        view.getExportButton().setText(bundle.getString("export"));
+        view.getMessageLabel().setText(bundle.getString("messageExportSuccess"));
+    }
+
     public void setupEventHandlers() {
+        view.getEnglishButton().setOnAction(e -> handleLanguageChange("English"));
+        view.getFrenchButton().setOnAction(e -> handleLanguageChange("Français"));
+        view.getRomanianButton().setOnAction(e -> handleLanguageChange("Română"));
         view.getExportButton().setOnAction(e -> handleExportCSV());
+    }
+
+    private void handleLanguageChange(String language) {
+        switch (language) {
+            case "English":
+                currentLocale = Locale.ENGLISH;
+                break;
+            case "Français":
+                currentLocale = Locale.FRENCH;
+                break;
+            case "Română":
+                currentLocale = new Locale("ro");
+                break;
+            default:
+                currentLocale = Locale.getDefault();
+        }
+        updateLanguage(); // Actualizează textul pe baza noii limbi
     }
 
     private void handleExportCSV() {
