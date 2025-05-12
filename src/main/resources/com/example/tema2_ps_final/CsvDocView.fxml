@@ -23,6 +23,9 @@
                     <!-- Action buttons -->
                     <HBox spacing="10">
                         <Button fx:id="exportButton" text="Exportă CSV" />
+                        <Button fx:id="englishButton" text="English" />
+                        <Button fx:id="frenchButton" text="Français" />
+                        <Button fx:id="romanianButton" text="Română" />
                     </HBox>
 
                     <!-- Message label -->

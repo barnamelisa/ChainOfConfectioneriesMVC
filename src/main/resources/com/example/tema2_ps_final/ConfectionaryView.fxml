@@ -11,14 +11,6 @@
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
 
-    <!-- Layout: Language selection -->
-    <HBox spacing="10" GridPane.columnSpan="2">
-        <Label text="Select Language:"/>
-        <RadioButton fx:id="englishButton" text="English" />
-        <RadioButton fx:id="romanianButton" text="Română" />
-        <RadioButton fx:id="frenchButton" text="Français" />
-    </HBox>
-
     <!-- Layout: TableView + Form -->
     <HBox GridPane.columnSpan="2" spacing="10" HBox.hgrow="ALWAYS">
         <!-- TableView -->
@@ -48,6 +40,9 @@
                         <Button fx:id="updateButton" text="Update Cofetarie"/>
                         <Button fx:id="deleteButton" text="Delete Cofetarie"/>
                         <Button fx:id="clearFieldsButton" text="Clear Fields"/>
+                        <Button fx:id="englishButton" text="English"/>
+                        <Button fx:id="frenchButton" text="Français"/>
+                        <Button fx:id="romanianButton" text="Română"/>
                     </HBox>
                 </VBox>
             </ScrollPane>
